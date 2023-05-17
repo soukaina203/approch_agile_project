@@ -10,7 +10,7 @@ use App\Models\Prof;
 class Cour extends Model
 {
     use HasFactory;
-    protected $fillable=['titre','description','prof_id','Matiere_id'];
+    protected $fillable=['title','description','prof_id','Matiere_id'];
     public function matieres(){
         return $this->belongsTo(Matiere::class);
     }

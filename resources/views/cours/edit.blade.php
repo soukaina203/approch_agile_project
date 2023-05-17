@@ -6,7 +6,8 @@
     @csrf
     <div class="form-group mb-3">
     <label for="title">le Titre :</label>
-    <input type="text" class="form-control" id="title" placeholder="Entrez un produit" name="title"
+    <input type="text" class="form-control" id="title"
+    placeholder="Entrez un produit" name="title"
     value='{{$coursTargeted->title}}'>
     </div>
     <div class="form-group mb-3">
@@ -14,10 +15,22 @@
     <input type="text" class="form-control" id="prix" placeholder="prix" name="description" value="{{$coursTargeted->description}}">
     </div>
     <div class="form-group mb-3">
-        <label for="prix">le Prix de Produit:</label>
-        <input type="text" class="form-control" id="prix" placeholder="prix"
-         name="prix" value="{{$coursTargeted->description}}">
+        <label for="prix">Prof:</label>
+
+    <input type="text" class="form-control"  id="prix"  value="{{$prof->fullName}}" name="" value="{{$coursTargeted->description}}">
+    <input type="text" class="form-control"  id="prix" hidden  value="{{$prof->fullName}}" hidden name="prof_id" value="{{$coursTargeted->description}}">
+
         </div>
+
+
+
+        <div class="form-group mb-3">
+            <label for="prix">Matieres:</label>
+            <input type="text" class="form-control"  value="{{$matiere->Nom}}" id="prix"  placeholder="prix" name="" value="{{$coursTargeted->description}}">
+            <input type="text" class="form-control"  value="{{$matiere->Nom}}" id="prix" hidden placeholder="prix" name="Matiere_id" value="{{$coursTargeted->description}}">
+
+            </div>
+    </div>
 
     </div>
     <button type="submit" class="btn btn-primary">Enregister</button>

@@ -26,7 +26,9 @@ class coursController extends Controller
 
     public function create()
     {
-        return view('cours.create');
+        $prof=Prof::all();
+        $matiers=Matiere::all();
+        return view('cours.create',['profs'=>$prof,'matieres'=>$matiers]);
     }
 
     public function store(Request $request)
@@ -53,7 +55,9 @@ class coursController extends Controller
     public function edit($id)
     {
         $cour = Cour::findOrFail($id);
-        return view('cours.edit', ['coursTargeted' => $cour]);
+        $prof = Prof::findOrFail($cour->prof_id);
+        $matiere = Matiere::findOrFail($cour->Matiere_id);
+        return view('cours.edit', ['coursTargeted' => $cour,'prof'=>$prof,'matiere'=>$matiere]);
     }
 
     public function update(Request $request, $id)
