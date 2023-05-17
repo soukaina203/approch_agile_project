@@ -15,7 +15,7 @@
     </div>
     <div class="form-group mb-3">
         <label for="prix">Prof:</label>
-<select class="form" name="prof_id" id="">
+<select class="form-control" name="prof_id" id="">
     <option value="">choisir le prof</option>
     @foreach ($profs as $item)
         <option value="{{$item->id}}">{{$item->fullName}}</option>
@@ -28,7 +28,7 @@
 
         <div class="form-group mb-3">
             <label for="prix">Matieres:</label>
-    <select name="Matiere_id" id="">
+    <select class="form-control" name="Matiere_id" id="">
     <option value="">choisir la matiere</option>
 
         @foreach ($matieres as $item)
