@@ -4,13 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cour;
+use App\Models\Prof;
+use App\Models\Matiere;
 
 class coursController extends Controller
 {
     public function index()
     {
-        $Products = Cour::all();
-        return view('first.index', ["prod" => $Products]);
+        $cours=Cour::all();
+        $prof=[];
+        $matier=[];
+        for ($i = 0; $i < count($cours); $i++) {
+            $profs = Prof::findOrFail($cours[$i]->prof_id);
+            $mat = Matiere::findOrFail($cours[$i]->Matiere_id);
+            array_push($prof, $profs->fullName);
+            array_push($matier, $mat->Nom);
+        }
+        return view('cours.index',['cours'=>$cours,'profs'=>$prof,'matier'=>$matier]);
     }
 
 
@@ -36,7 +46,7 @@ class coursController extends Controller
     public function show($id)
     {
         $product = Cour::findOrFail($id);
-        return view('first.show', ['productTarget' => $product]);
+        return view('cours.show', ['productTarget' => $product]);
     }
 
 

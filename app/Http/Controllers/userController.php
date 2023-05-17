@@ -6,38 +6,59 @@ use Illuminate\Support\Facades\Hash;
 
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Cour;
 use App\Models\Prof;
 use App\Models\Etudiant;
 
 class userController extends Controller
 {
-public function sendLogin (){
-return view('compo.login');
-}
-    public function login(Request $request)
+    public function choosenPage()
     {
-        $prof = null;
-        $etud = null;
-        $msg = null;
+        return view('choose');
+    }
 
-        $prof = Prof::where('email', $request->email)
-            ->where('password', Hash::make($request->input('password')))
-            ->first();
+    public function login()
+    {
+        return view('Authi.login',);
+    }
+    public function signUp($any)
+    {
+        return view('Authi.signUp', compact('any'));
+    }
 
-        $etud = Etudiant::where('email', $request->email)
-            ->where('password', Hash::make($request->input('password')))
-            ->first();
-        if ($prof || $etud) {
-            if ($prof) {
-                return view('compo.landing', compact('prof'));
-            }
-            if ($etud) {
-                return view('compo.landing', compact('etud'));
-            }
-        } else {
-            $msg = 'nothing';
-            return view('compo.landing', compact('msg'));
+
+
+
+    public function handleLogin(Request $request)
+    {
+        $prof = Prof::where('email', $request->email)->first();
+        $etud = Etudiant::where('email', $request->email)->first();
+
+        // admin
+        if ($request->email === 'admin@gmail.com' && $request->password === 'admin9') {
+            return view('Admin.admin');
         }
+
+        if ($prof && Hash::check($request->password, $prof->password)) {
+            return view('Prof.prof', compact('prof'));
+        }
+
+
+
+
+        if ($etud && Hash::check($request->password, $etud->password)) {
+            $cours=Cour::all();
+            $prof=[];
+            for ($i = 0; $i < count($cours); $i++) {
+                $profs = Prof::findOrFail($cours[$i]->prof_id);
+                array_push($prof, $profs->fullName);
+            }
+         return view('student.stud', ['etud'=>$etud,'cours'=>$cours,'profs'=>$prof]);
+        }
+        //
+
+
+
+        return view('compo.landing', compact('msg'));
     }
 }

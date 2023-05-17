@@ -35,7 +35,7 @@ class etudiantController extends Controller
 
         ]);
         $Etudiants->save();
-        return view('compo.login');
+        return view('Authi.login');
     }
 
 

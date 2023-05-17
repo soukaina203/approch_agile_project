@@ -18,7 +18,7 @@ use App\Http\Controllers\userController;
 */
 
 Route::get('/', function () {
-    return view('main');
+    return view('layouts.app');
 });
 
 // Auth::routes();
@@ -28,5 +28,10 @@ Route::resource('Matiere',matiereController::class );
 Route::resource('Profs',profController::class );
 Route::resource('Etudiants',etudiantController::class );
 Route::resource('Cours',coursController::class );
-Route::get('/login',[userController::class,'sendLogin']);
-Route::post('/login',[userController::class,'login']);
+
+Route::get('/login',[userController::class,'login']);
+Route::post('/handleLogin',[userController::class,'handleLogin']);
+Route::get('/signUp/{any}',[userController::class,'signUp']);
+
+
+Route::get('/choose',[userController::class,'choosenPage']);
