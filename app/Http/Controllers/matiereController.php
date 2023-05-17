@@ -10,58 +10,60 @@ class matiereController extends Controller
     public function index()
     {
         $Matiere = Matiere::all();
-        return view('first.index', ["prod" => $Matiere]);
+        return view('matiere.index', ["Matieres" => $Matiere]);
     }
 
 
     public function create()
     {
-        return view('first.create');
+        return view('matiere.create');
     }
 
     public function store(Request $request)
     {
         $Matiere = new Matiere([
-            "title" => $request->input('title'),
+            "Nom" => $request->input('Nom'),
             "description" => $request->input('description'),
-            "prof_id" => $request->input('prof_id'),
-            "Matiere_id" => $request->input('Matiere_id'),
+            "duree" => $request->input('duree'),
+            "Niveau" => $request->input('Niveau'),
+            "contenu" => $request->input('contenu'),
 
         ]);
         $Matiere->save();
-        return redirect('/')->with('success', 'Personnage Ajouté avec succès');
+        return redirect('/Matiere')->with('success', 'Personnage Ajouté avec succès');
     }
 
 
     public function show($id)
     {
-        $product = Matiere::findOrFail($id);
-        return view('first.show', ['productTarget' => $product]);
+        $matieres = Matiere::findOrFail($id);
+        return view('matiere.show', ['matiere' => $matieres]);
     }
 
 
     public function edit($id)
     {
-        $product = Matiere::findOrFail($id);
-        return view('first.edit', ['productTarget' => $product]);
+        $Matiere = Matiere::findOrFail($id);
+        return view('matiere.edit', ['Matiere' => $Matiere]);
     }
 
     public function update(Request $request, $id)
     {
         $Product = Matiere::findOrFail($id);
-        $Product->title = $request->input('title');
+        $Product->Nom = $request->input('Nom');
         $Product->description = $request->input('description');
-        $Product->prof_id = $request->input('prof_id');
-        $Product->Matiere_id = $request->input('Matiere_id');
+        $Product->duree = $request->input('duree');
+        $Product->Niveau = $request->input('Niveau');
+        $Product->contenu = $request->input('contenu');
 
         $Product->update();
-        return redirect('/')->with('success', 'Personnage Modifié avec succès');
+        return redirect('/Matiere')->with('success', 'Personnage Modifié avec succès');
     }
 
     public function destroy($id)
     {
         $Product = Matiere::findOrFail($id);
         $Product->delete();
-        return redirect('/')->with('success', 'Personnage Modifié avec succès');
+        return redirect('/Matiere')->with('success', 'Personnage Modifié avec succès');
     }
 }

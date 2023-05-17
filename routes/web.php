@@ -35,3 +35,5 @@ Route::get('/signUp/{any}',[userController::class,'signUp']);
 
 
 Route::get('/choose',[userController::class,'choosenPage']);
+
+Route::get('ProfCours/{id}',[profController::class,'profCours'] );

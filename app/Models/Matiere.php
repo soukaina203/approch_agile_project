@@ -9,7 +9,7 @@ use App\Models\Cour;
 class Matiere extends Model
 {
     use HasFactory;
-    protected $fillable=['Nom'];
+    protected $fillable=['Nom','duree','description','Niveau','contenu'];
     public function cours(){
         return $this->hasMany(Cour::class);
     }

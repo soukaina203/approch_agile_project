@@ -53,7 +53,7 @@ class userController extends Controller
                 $profs = Prof::findOrFail($cours[$i]->prof_id);
                 array_push($prof, $profs->fullName);
             }
-         return view('student.stud', ['etud'=>$etud,'cours'=>$cours,'profs'=>$prof]);
+         return view('etudiant.stud', ['etud'=>$etud,'cours'=>$cours,'profs'=>$prof]);
         }
         //
 

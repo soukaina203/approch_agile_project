@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cour;
+use App\Models\Matiere;
 use Illuminate\Http\Request;
 use App\Models\Prof;
 use Illuminate\Support\Facades\Hash;
@@ -49,6 +51,18 @@ class profController extends Controller
 
     }
 
+    public function profCours($id)
+    {
+        $Profs = Prof::findOrFail($id);
+        $cours = Cour::all();
+        $Matiere = Matiere::all();
+        $Profs = Prof::findOrFail($id);
+        $cours=$Profs->cours;
+        return view('Prof.allCours', ['cours' => $cours,
+        'Matiere'=>$Matiere]);
+
+
+    }
     public function update(Request $request, $id)
     {
         $Profs = Prof::findOrFail($id);
