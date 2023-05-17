@@ -9,7 +9,6 @@
                 <div class="card-body">
                     @if ($any==='etudiant')
                     <form method="POST" action="{{ url('Etudiants')}}">
-                        etud
                         @csrf
 
                         <div class="row mb-3">

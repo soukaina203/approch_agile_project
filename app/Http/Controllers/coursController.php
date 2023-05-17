@@ -26,7 +26,7 @@ class coursController extends Controller
 
     public function create()
     {
-        return view('first.create');
+        return view('cours.create');
     }
 
     public function store(Request $request)
@@ -39,7 +39,7 @@ class coursController extends Controller
 
         ]);
         $Products->save();
-        return redirect('/')->with('success', 'Personnage Ajouté avec succès');
+        return redirect('/Cours')->with('success', 'Personnage Ajouté avec succès');
     }
 
 
@@ -52,8 +52,8 @@ class coursController extends Controller
 
     public function edit($id)
     {
-        $product = Cour::findOrFail($id);
-        return view('first.edit', ['productTarget' => $product]);
+        $cour = Cour::findOrFail($id);
+        return view('cours.edit', ['coursTargeted' => $cour]);
     }
 
     public function update(Request $request, $id)
@@ -65,13 +65,13 @@ class coursController extends Controller
         $Product->Matiere_id = $request->input('Matiere_id');
 
         $Product->update();
-        return redirect('/')->with('success', 'Personnage Modifié avec succès');
+        return redirect('/Cours')->with('success', 'Personnage Modifié avec succès');
     }
 
     public function destroy($id)
     {
         $Product = Cour::findOrFail($id);
         $Product->delete();
-        return redirect('/')->with('success', 'Personnage Modifié avec succès');
+        return redirect('/Cours')->with('success', 'Personnage Modifié avec succès');
     }
 }

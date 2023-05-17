@@ -11,13 +11,13 @@ class profController extends Controller
     public function index()
     {
         $Profs = Prof::all();
-        return view('first.index', ["prod" => $Profs]);
+        return view('Prof.index', ["profs" => $Profs]);
     }
 
 
     public function create()
     {
-        return view('compo.create');
+        return view('Prof.create');
     }
 
     public function store(Request $request)
@@ -30,21 +30,21 @@ class profController extends Controller
 
         ]);
         $Profs->save();
-        return redirect('/')->with('success', 'Personnage Ajouté avec succès');
+        return redirect('/Profs')->with('success', 'Personnage Ajouté avec succès');
     }
 
 
     public function show($id)
     {
         $Profs = Prof::findOrFail($id);
-        return view('first.show', ['ProfsTarget' => $Profs]);
+        return view('Prof.show', ['ProfsTarget' => $Profs]);
     }
 
 
     public function edit($id)
     {
         $Profs = Prof::findOrFail($id);
-        return view('first.edit', ['ProfsTarget' => $Profs]);
+        return view('Prof.edit', ['ProfsTarget' => $Profs]);
 
 
     }
@@ -57,13 +57,13 @@ class profController extends Controller
         $Profs->Telephone = $request->input('Telephone');
 
         $Profs->update();
-        return redirect('/')->with('success', 'Personnage Modifié avec succès');
+        return redirect('/Profs')->with('success', 'Personnage Modifié avec succès');
     }
 
     public function destroy($id)
     {
         $Profs = Prof::findOrFail($id);
         $Profs->delete();
-        return redirect('/')->with('success', 'Personnage Modifié avec succès');
+        return redirect('/Profs')->with('success', 'Personnage Modifié avec succès');
     }
 }

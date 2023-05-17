@@ -9,23 +9,28 @@
     <th>Titre</th>
     <th>Prof</th>
     <th>Matiere</th>
+    <th>Actions</th>
 
     </tr>
     @for ($i = 0; $i < count($cours); $i++)
 
     <tr>
-        <td>{{ $i }}</td>
+        <td>{{ $cours[$i]->id }}</td>
         <td>{{ $cours[$i]->title }}</td>
         <td>{{ $profs[$i] }}</td>
         <td>{{ $matier[$i] }}</td>
 
-    {{-- <td>
+    <td>
 
-            <a class="btn btn-info" href="{{ url('Products/'. $product->id) }}">Voir</a>
-            <a class="btn btn-primary" href="{{ url('Products/'. $product->id .'/edit') }}">Modifier</a>
-            <a class="btn btn-danger" href="{{ url('Products/'. $product->id .'/delete') }}">Supprimer</a>
+        <form action="{{ url('Cours/'. $cours[$i]->id) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <a class="btn btn-info" href="{{ url('Cours/'.$cours[$i]->id) }}">Voir</a>
+            <a class="btn btn-primary" href="{{ url('Cours/'. $cours[$i]->id .'/edit') }}">Modifier</a>
+            <button type="submit" class="btn btn-danger">Supprimer</button>
+            </form>
 
-            </td> --}}
+            </td>
             </tr>
             @endfor
 

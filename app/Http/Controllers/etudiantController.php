@@ -14,13 +14,13 @@ class etudiantController extends Controller
     public function index()
     {
         $Etudiants = Etudiant::all();
-        return view('first.index', ["prod" => $Etudiants]);
+        return view('etudiant.index', ["etud" => $Etudiants]);
     }
 
 
     public function create()
     {
-        return view('compo.create1');
+        return view('etudiant.create');
     }
 
     public function store(Request $request)
@@ -35,21 +35,22 @@ class etudiantController extends Controller
 
         ]);
         $Etudiants->save();
-        return view('Authi.login');
+        // return view('Authi.login');
+        return redirect('/Etudiants');
     }
 
 
     public function show($id)
     {
-        $product = Etudiant::findOrFail($id);
-        return view('first.show', ['productTarget' => $product]);
+        $etudiant = Etudiant::findOrFail($id);
+        return view('etudiant.show', ['etudiant' => $etudiant]);
     }
 
 
     public function edit($id)
     {
-        $product = Etudiant::findOrFail($id);
-        return view('first.edit', ['productTarget' => $product]);
+        $etudiant = Etudiant::findOrFail($id);
+        return view('etudiant.edit', ['etudiant' => $etudiant]);
 
 
     }
@@ -64,13 +65,13 @@ class etudiantController extends Controller
         $Product->password = $request->input('password');
 
         $Product->update();
-        return redirect('/')->with('success', 'Personnage Modifié avec succès');
+        return redirect('/Etudiants')->with('success', 'Personnage Modifié avec succès');
     }
 
     public function destroy($id)
     {
         $Product = Etudiant::findOrFail($id);
         $Product->delete();
-        return redirect('/')->with('success', 'Personnage Modifié avec succès');
+        return redirect('/Etudiants')->with('success', 'Personnage Modifié avec succès');
     }
 }

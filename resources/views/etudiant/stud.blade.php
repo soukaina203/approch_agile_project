@@ -9,13 +9,14 @@
     <th>No</th>
     <th>Titre</th>
     <th>Prof</th>
+    <th>Actions</th>
 
     </tr>
 @for ($i = 0; $i < count($cours); $i++)
 
     <tr>
     <td>{{ $i }}</td>
-    <td>{{ $cours[$i]->titre }}</td>
+    <td>{{ $cours[$i]->title }}</td>
     <td>{{ $profs[$i] }}</td>
 
     <td>
