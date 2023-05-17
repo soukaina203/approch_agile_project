@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Etudiant;
+use Illuminate\Support\Facades\Hash;
 
 class etudiantController extends Controller
 {
@@ -19,7 +20,7 @@ class etudiantController extends Controller
 
     public function create()
     {
-        return view('first.create');
+        return view('compo.create1');
     }
 
     public function store(Request $request)
@@ -29,10 +30,12 @@ class etudiantController extends Controller
             "email" => $request->input('email'),
             "Telephone" => $request->input('Telephone'),
             "niveauEtude" => $request->input('niveauEtude'),
+            "password" =>  Hash::make($request->input('password')),
+
 
         ]);
         $Etudiants->save();
-        return redirect('/')->with('success', 'Personnage Ajouté avec succès');
+        return view('compo.login');
     }
 
 
@@ -58,6 +61,7 @@ class etudiantController extends Controller
         $Product->email = $request->input('email');
         $Product->Telephone = $request->input('Telephone');
         $Product->niveauEtude = $request->input('niveauEtude');
+        $Product->password = $request->input('password');
 
         $Product->update();
         return redirect('/')->with('success', 'Personnage Modifié avec succès');

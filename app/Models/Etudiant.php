@@ -9,7 +9,7 @@ use App\Models\Prof;
 class Etudiant extends Model
 {
     use HasFactory;
-    protected $fillable = ['fullName', 'email', 'Telephone', 'niveauEtude'];
+    protected $fillable = ['fullName', 'email', 'Telephone', 'niveauEtude','password'];
     public function profs()
     {
         return $this->hasMany(Prof::class);

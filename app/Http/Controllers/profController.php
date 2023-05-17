@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Prof;
+use Illuminate\Support\Facades\Hash;
 
 class profController extends Controller
 {
@@ -16,7 +17,7 @@ class profController extends Controller
 
     public function create()
     {
-        return view('first.create');
+        return view('compo.create');
     }
 
     public function store(Request $request)
@@ -25,7 +26,7 @@ class profController extends Controller
             "fullName" => $request->input('fullName'),
             "email" => $request->input('email'),
             "Telephone" => $request->input('Telephone'),
-            "Matiere_id" => $request->input('Matiere_id'),
+            "password" =>  Hash::make($request->input('password')),
 
         ]);
         $Profs->save();
@@ -54,7 +55,6 @@ class profController extends Controller
         $Profs->fullName = $request->input('fullName');
         $Profs->email = $request->input('email');
         $Profs->Telephone = $request->input('Telephone');
-        $Profs->Matiere_id = $request->input('Matiere_id');
 
         $Profs->update();
         return redirect('/')->with('success', 'Personnage Modifié avec succès');
