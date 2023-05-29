@@ -1,4 +1,5 @@
 
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -19,9 +20,7 @@
               <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
                 <div class="ulHeader">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('cours/all')}}">Les Cours</a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="/login">Login </a>
                     </li>
@@ -29,11 +28,9 @@
                         <a class="nav-link" href="/choose">SignUp</a>
                     </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="#">{{$prof_name}}</a>
+                          <a class="nav-link" href="#">{{$etud_name}}</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{url('Cours/')}}">vos Cours</a>
-                          </li>
+
                           <li class="nav-item">
                             <a class="nav-link" href="{{url('logout/')}}">Log out</a>
                           </li>
@@ -43,9 +40,32 @@
           </nav>
         <br>
 
-        <main class="py-4">
-            @yield('content1')
-        </main>
+
+        @if ($cours->isEmpty())
+        <h2>No Result</h2>
+      @else
+      <h1>Results</h1>
+        <table class="table table-bordered">
+          <tr>
+            <th>No</th>
+            <th>Titre</th>
+            <th>Prof</th>
+            <th>Matiere</th>
+            <th>Actions</th>
+          </tr>
+          @foreach ($cours as $index => $cour)
+          <tr>
+            <td>{{ $cour->id }}</td>
+            <td>{{ $cour->title }}</td>
+            <td>{{ $profs[$index] }}</td>
+            <td>{{ $matier[$index] }}</td>
+            <td>
+              <a class="btn btn-info" href="{{ url('Cours/'. $cour->id).'/etud' }}">Voir</a>
+            </td>
+          </tr>
+          @endforeach
+        </table>
+      @endif
     </div>
 </body>
 </html>

@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('Prof.prof')
 
-@section('content')
+@section('content1')
 <form method="POST" action="{{ url('Cours/')}}" >
     @csrf
     <div class="form-group mb-3">

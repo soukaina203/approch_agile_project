@@ -3,8 +3,8 @@
 @section('content')
 
 
-
-    <form method="POST" action="{{ url('handleLogin') }}">
+<br>
+    <form  action="{{ url('/handleLogin') }}" method="POST">
         @csrf
 
         <div class="row mb-3">

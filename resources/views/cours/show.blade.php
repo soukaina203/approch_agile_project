@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@section('content')
+@extends('Prof.prof')
+@section('content1')
  <h1>{{ $productTarget->title }}</h1>
 
 

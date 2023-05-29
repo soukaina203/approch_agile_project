@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Models\Cour;
 use App\Models\Prof;
 use App\Models\Etudiant;
+use App\Models\Matiere;
+use Illuminate\Support\Facades\Session;
 
 class userController extends Controller
 {
@@ -27,7 +29,13 @@ class userController extends Controller
     }
 
 
+    public function logOut()
+    {
+        Session::forget('prof_name');
 
+
+        return view('Authi.login');
+    }
 
     public function handleLogin(Request $request)
     {
@@ -40,20 +48,32 @@ class userController extends Controller
         }
 
         if ($prof && Hash::check($request->password, $prof->password)) {
-            return view('Prof.prof', compact('prof'));
+            session(['prof_name' => $prof->fullName]);
+            session(['prof_id' => $prof->id]);
+            $prof_name = $prof->fullName;
+            return view('Prof.prof', compact('prof_name'));
         }
 
 
 
 
         if ($etud && Hash::check($request->password, $etud->password)) {
-            $cours=Cour::all();
-            $prof=[];
+            session(['etud_name' => $etud->fullName]);
+
+            $cours = Cour::all();
+            $prof = [];
+            $matier = [];
+
             for ($i = 0; $i < count($cours); $i++) {
                 $profs = Prof::findOrFail($cours[$i]->prof_id);
+                $mat = Matiere::findOrFail($cours[$i]->Matiere_id);
                 array_push($prof, $profs->fullName);
+                array_push($matier, $mat->Nom);
             }
-         return view('etudiant.stud', ['etud'=>$etud,'cours'=>$cours,'profs'=>$prof]);
+            return view('etudiant.stud', [
+                'etud' => $etud, 'cours' => $cours, 'profs' => $prof,
+                'matiers' => $matier
+            ]);
         }
         //
 

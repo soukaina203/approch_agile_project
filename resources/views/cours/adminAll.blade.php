@@ -1,5 +1,5 @@
-@extends('Prof.prof')
-@section('content1')
+@extends('layouts.app')
+@section('content')
 <div class="col-lg-1">
 {{-- <a class="btn btn-success" href="{{url('Products/create') }}">Ajouter</a> --}}
 </div>
@@ -38,4 +38,3 @@
             {{-- <a href="{{url('/login')}}">Login</a>
             <a href="">Register</a> --}}
 @endsection
-

@@ -3,6 +3,7 @@
 <div class="col-lg-1">
 {{-- <a class="btn btn-success" href="{{url('Products/create') }}">Ajouter</a> --}}
 </div>
+<h1>TOUS LES COURS</h1>
 <table class="table table-bordered">
     <tr>
     <th>No</th>
@@ -22,13 +23,9 @@
 
     <td>
 
-        <form action="{{ url('Cours/'. $cours[$i]->id) }}" method="POST">
-            @csrf
-            @method('DELETE')
+
             <a class="btn btn-info" href="{{ url('Cours/'.$cours[$i]->id) }}">Voir</a>
-            <a class="btn btn-primary" href="{{ url('Cours/'. $cours[$i]->id .'/edit') }}">Modifier</a>
-            <button type="submit" class="btn btn-danger">Supprimer</button>
-            </form>
+
 
             </td>
             </tr>

@@ -25,6 +25,11 @@
             position: absolute;
             left: 20px;
             top: 15px
+        }.user2{
+            position: absolute;
+            top: 25px;
+            right: 40px;
+            color: rgb(136, 130, 130)
         }
       </style>
 </head>
@@ -33,9 +38,9 @@
         @include('Header')
 
 
-        <main class="py-4">
-            @yield('content')
-        </main>
     </div>
+    <main class="py-4">
+        @yield('content')
+    </main>
 </body>
 </html>

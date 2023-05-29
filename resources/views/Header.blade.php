@@ -14,11 +14,13 @@
                   <li class="nav-item">
                     <a class="nav-link" href="/choose">SignUp</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{url('logout/')}}">Log out</a>
+                  </li>
             </ul>
           </div>
         </div>
       </nav>
 
-{{-- <button> <a href="Profs/create"> prof</a> </button>
-<button> <a href="Etudiants/create"> Student</a> </button> --}}
+
 

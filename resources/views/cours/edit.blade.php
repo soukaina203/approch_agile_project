@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('Prof.prof')
 
-@section('content')
+@section('content1')
 <form method="post" action="{{ url('Cours/'.$coursTargeted->id) }}" >
     @method('PATCH')
     @csrf
@@ -17,18 +17,29 @@
     <div class="form-group mb-3">
         <label for="prix">Prof:</label>
 
-    <input type="text" class="form-control"  id="prix"  value="{{$prof->fullName}}" name="" value="{{$coursTargeted->description}}">
-    <input type="text" class="form-control"  id="prix" hidden  value="{{$prof->fullName}}" hidden name="prof_id" value="{{$coursTargeted->description}}">
+        <select class="form-control" name="prof_id" id="" defaultValue="{{$prof->id}}">
+            <option value="{{$prof->id}}">{{$prof->fullName}}</option>
+            @foreach ($tsProf as $item)
+                <option value="{{$item->id}}">{{$item->fullName}}</option>
+            @endforeach
 
+        </select>
         </div>
 
 
 
-        <div class="form-group mb-3">
-            <label for="prix">Matieres:</label>
-            <input type="text" class="form-control"  value="{{$matiere->Nom}}" id="prix"  placeholder="prix" name="" value="{{$coursTargeted->description}}">
-            <input type="text" class="form-control"  value="{{$matiere->Nom}}" id="prix" hidden placeholder="prix" name="Matiere_id" value="{{$coursTargeted->description}}">
+            <div class="form-group mb-3">
+                <label for="prix">Matieres:</label>
+        <select class="form-control" name="Matiere_id" defaultValue="{{$matiere->id}}" id="">
+        <option value="{{$matiere->Nom}}">{{$matiere->Nom}}</option>
 
+            @foreach ($tsMat as $item)
+                <option value="{{$item->id}}">{{$item->Nom}}</option>
+            @endforeach
+
+        </select>
+                </div>
+        </div>
             </div>
     </div>
 

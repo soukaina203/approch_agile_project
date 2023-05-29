@@ -19,9 +19,7 @@
               <div class="collapse navbar-collapse justify-content-end " id="navbarNav">
                 <div class="ulHeader">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('cours/all')}}">Les Cours</a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="/login">Login </a>
                     </li>
@@ -29,11 +27,9 @@
                         <a class="nav-link" href="/choose">SignUp</a>
                     </li>
                       <li class="nav-item">
-                          <a class="nav-link" href="#">{{$prof_name}}</a>
+                          <a class="nav-link" href="#">{{$etud_name}}</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{url('Cours/')}}">vos Cours</a>
-                          </li>
+
                           <li class="nav-item">
                             <a class="nav-link" href="{{url('logout/')}}">Log out</a>
                           </li>
@@ -42,10 +38,13 @@
             </div>
           </nav>
         <br>
+        <h1>{{ $productTarget->title }}</h1>
 
-        <main class="py-4">
-            @yield('content1')
-        </main>
+
+        <p>{{ $productTarget->description }}</p>
+
+
+
     </div>
 </body>
 </html>
