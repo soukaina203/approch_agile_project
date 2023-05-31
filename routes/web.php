@@ -43,3 +43,7 @@ Route::get('logout/',[userController::class,'logOut']);
 Route::get('/choose',[userController::class,'choosenPage']);
 
 Route::get('ProfCours/{id}',[profController::class,'profCours'] );
+Route::get('/',function () {
+    return view('welcome');
+}
+);

@@ -79,7 +79,6 @@
                     @endif
                     @if ($any==='prof')
                     <form method="POST" action="{{ url('Profs')}}">
-                        prof
                         @csrf
 
                         <div class="row mb-3">

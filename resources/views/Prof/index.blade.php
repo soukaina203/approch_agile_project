@@ -27,7 +27,7 @@
             @method('DELETE')
             <a class="btn btn-info" href="{{ url('Profs/'.$prof->id) }}">Voir</a>
             <a class="btn btn-primary" href="{{ url('Profs/'. $prof->id .'/edit') }}">Modifier</a>
-            <a class="btn btn-primary" href="{{ url('ProfCours/'. $prof->id ) }}">Voir tous ses etudiant</a>
+            <a class="btn btn-primary" href="{{ url('ProfCours/'. $prof->id ) }}">Voir tous ses cours</a>
 
             <button type="submit" class="btn btn-danger">Supprimer</button>
             </form>

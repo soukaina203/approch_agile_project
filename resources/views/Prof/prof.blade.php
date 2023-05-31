@@ -22,21 +22,21 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('cours/all')}}">Les Cours</a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="/login">Login </a>
+                    </li> --}}
+                    {{-- <li class="nav-item">
+                        <a class="nav-link" href="/choose">SignUp</a>
+                    </li> --}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('Cours/')}}">vos Cours</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/choose">SignUp</a>
+                        <a class="nav-link" href="{{url('logout/')}}">Log out</a>
                     </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="#">{{$prof_name}}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{url('Cours/')}}">vos Cours</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="{{url('logout/')}}">Log out</a>
-                          </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{{$prof_name}}</a>
+                      </li>
                 </ul>
               </div>
             </div>
